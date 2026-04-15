@@ -1,0 +1,884 @@
+/* Variables globales reutilizadas en la identidad visual del proyecto. */
+:root {
+    --bg: #0d1b3d;
+    --bg-soft: #132654;
+    --card: rgba(255, 255, 255, 0.95);
+    --card-alt: rgba(247, 250, 255, 0.95);
+    --ink: #1a2540;
+    --muted: #5f6f8a;
+    --primary: #4f7cff;
+    --primary-soft: #e8efff;
+    --accent: #10b7a8;
+    --border: #d8e2f5;
+}
+
+/* Configuracion general del body y fondo decorativo principal. */
+body {
+    font-family: "Segoe UI", "Inter", Arial, sans-serif;
+    background:
+        radial-gradient(1200px 520px at 0% -15%, #5b86ff4d, transparent 62%),
+        radial-gradient(900px 420px at 100% 0%, #29d6c44a, transparent 58%),
+        linear-gradient(160deg, #0a1430 0%, var(--bg) 45%, var(--bg-soft) 100%);
+    color: var(--ink);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1120px;
+}
+
+/* Navegacion superior comun de la aplicacion. */
+.app-navbar {
+    background: linear-gradient(135deg, #1f3f96, #1a2f73);
+    border-bottom: 1px solid #2c4ca8;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(5, 13, 34, 0.35);
+}
+
+.app-navbar .navbar-brand,
+.app-navbar .navbar-brand i,
+.app-navbar .btn-link,
+.app-navbar .text-muted,
+.app-navbar .app-user-chip {
+    color: #f4f7ff !important;
+}
+
+.app-navbar .app-user-chip {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.app-navbar .btn-outline-primary,
+.app-navbar .btn-outline-secondary,
+.app-navbar .btn-outline-danger {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #f4f7ff;
+}
+
+.app-navbar .btn-outline-primary:hover,
+.app-navbar .btn-outline-secondary:hover,
+.app-navbar .btn-outline-danger:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.brand-text {
+    letter-spacing: .6px;
+    font-weight: 800;
+}
+
+.fa-plane-departure {
+    font-size: 1.25rem;
+}
+
+.app-link-btn {
+    font-weight: 600;
+}
+
+.app-user-chip {
+    background: #f4f7ff;
+    border: 1px solid #dce5ff;
+    border-radius: 999px;
+    padding: 6px 10px;
+}
+
+/* Tarjeta base reutilizada por casi todas las pantallas. */
+.card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card);
+    box-shadow:
+        0 16px 32px rgba(6, 15, 41, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #5f85ff, #4f7cff);
+    border-color: #4f7cff;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(79, 124, 255, 0.35);
+}
+
+.btn-outline-primary {
+    border-color: #7d98ff;
+    color: #315df0;
+    background: #f5f8ff;
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-soft);
+    color: #244ed8;
+    border-color: #6a89fb;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-color: #159947;
+    box-shadow: 0 10px 20px rgba(22, 163, 74, 0.28);
+}
+
+h1, h2, h3, h4, h5 {
+    letter-spacing: -0.02em;
+    color: #ecf2ff;
+}
+
+.container > h1 {
+    font-size: 2.15rem;
+    font-weight: 800;
+}
+
+.card h1, .card h2, .card h3, .card h4, .card h5 {
+    color: var(--ink);
+}
+
+.text-muted {
+    color: #d1dbf8 !important;
+}
+
+.card .text-muted,
+.card small.text-muted {
+    color: #6f7f98 !important;
+}
+
+/* Contenedor centrado para Login/Registro */
+/* Contenedor centrado para formularios de acceso y registro. */
+.auth-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(41, 65, 128, 0.12);
+    border: 1px solid #e9edf5;
+}
+
+.auth-card h2 {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.auth-card .form-control {
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+}
+
+.btn-auth {
+    background: linear-gradient(135deg, #4f7bff, #3f6df6);
+    color: white;
+    border-radius: 25px;
+    padding: 10px;
+    font-weight: 600;
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+}
+
+.btn-google-auth {
+    background: white;
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.services-topbar {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: #fff;
+    box-shadow: 0 10px 26px rgba(9, 17, 48, 0.22);
+}
+
+.services-filters {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    background: linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(246,250,255,.88) 100%);
+}
+
+.service-item {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: transform .18s ease, box-shadow .18s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.service-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px rgba(33, 54, 110, 0.1);
+}
+
+.service-item .btn-success {
+    min-width: 190px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.service-item .btn-outline-secondary {
+    min-width: 190px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.service-thumb {
+    width: 92px;
+    height: 72px;
+    border-radius: 8px;
+    background: #ececec;
+    border: 1px solid #dadada;
+    flex-shrink: 0;
+}
+
+.service-thumb-img {
+    width: 110px;
+    height: 78px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #dadff0;
+    flex-shrink: 0;
+}
+
+.auth-card {
+    border-radius: 18px;
+}
+
+.flight-result {
+    display: grid;
+    grid-template-columns: 110px 1.9fr 110px 130px 180px;
+    gap: 14px;
+    align-items: center;
+}
+
+.flight-company {
+    text-align: center;
+}
+
+.flight-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    border: 1px solid #dbe5ff;
+    background: #eef3ff;
+    color: #2d53d9;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 6px auto;
+}
+
+.flight-logo-img {
+    width: 72px;
+    height: 40px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid #dbe5ff;
+    border-radius: 8px;
+    padding: 4px;
+    margin: 0 auto 6px auto;
+    display: block;
+}
+
+.flight-times {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flight-hour {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.flight-route {
+    font-size: .86rem;
+    color: #6f7f98;
+}
+
+.flight-meta {
+    line-height: 1.7;
+}
+
+.flight-price {
+    text-align: right;
+}
+
+.itinerary-service-row {
+    background: rgba(255, 255, 255, 0.65);
+}
+
+.itinerary-thumb-img {
+    width: 88px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #d8e2f5;
+    flex-shrink: 0;
+}
+
+.itinerary-thumb-placeholder {
+    width: 88px;
+    height: 64px;
+    border-radius: 8px;
+    border: 1px solid #d8e2f5;
+    background: #eef3ff;
+    color: #6f7f98;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    flex-shrink: 0;
+}
+
+/* Estilos para el título del itinerario */
+.itinerary-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a2f73;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #1a2f73, #2c4ca8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+/* Hero del itinerario con titulo grande y glow decorativo. */
+.itinerary-hero-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    margin: 0 0 0.3rem;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+.itinerary-hero-wrap {
+    flex: 1 1 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.itinerary-hero-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #2947ab;
+    text-shadow: 0 8px 24px rgba(24, 49, 123, 0.24);
+}
+
+.itinerary-hero-icon {
+    font-size: 0.9em;
+}
+
+.itinerary-hero-destination {
+    color: #39c5e8;
+    text-shadow: 0 10px 28px rgba(57, 197, 232, 0.34);
+}
+
+.itinerary-hero-glow {
+    width: 185px;
+    max-width: 40vw;
+    height: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.55rem;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 116, 72, 0.95) 0%, rgba(255, 116, 72, 0.45) 36%, rgba(255, 116, 72, 0.1) 72%, rgba(255, 116, 72, 0) 100%);
+    filter: blur(4px);
+    opacity: 0.95;
+}
+
+.itinerary-hero-meta {
+    color: #edf3ff;
+    font-size: 1.15rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.destination-highlight {
+    color: #00bcd4;
+    font-weight: 900;
+    -webkit-text-fill-color: #00bcd4;
+    text-shadow: 2px 2px 4px rgba(0,188,212,0.3);
+}
+
+.title-decoration {
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #00bcd4, transparent);
+    border-radius: 2px;
+    margin: 0 auto;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(0,188,212,0.3);
+}
+
+/* Estilos para títulos principales con acento naranja */
+/* Sistema de titulos decorados usado en portada y paneles. */
+.main-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.title-main {
+    color: #1a2f73;
+    background: linear-gradient(135deg, #1a2f73, #2c4ca8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.title-accent {
+    color: #00bcd4;
+    font-weight: 900;
+    -webkit-text-fill-color: #00bcd4;
+    text-shadow: 2px 2px 4px rgba(0,188,212,0.3);
+}
+
+/* Estilos para cuadrícula de servicios */
+/* Tarjetas en rejilla para servicios como hoteles y actividades. */
+.service-grid-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e9ecef;
+    position: relative;
+}
+
+.service-grid-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.service-grid-img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+}
+
+.service-grid-placeholder {
+    height: 200px;
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+}
+
+.services-page-title {
+    color: #f4f7ff;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+}
+
+.services-page-subtitle {
+    color: #d5ddf6;
+    margin-bottom: 0;
+}
+
+.services-toolbar-card,
+.services-search-card {
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.96);
+}
+
+.budget-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #4f7cff, #3f6df6);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.92rem;
+    white-space: nowrap;
+}
+
+.services-count {
+    color: #d5ddf6;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Tarjetas especializadas de alojamiento. */
+.hotel-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fdfefe;
+    border: 1px solid #dbe6f6;
+    box-shadow: 0 14px 28px rgba(7, 16, 42, 0.22);
+}
+
+.hotel-card .card-body {
+    padding: 1.15rem 1rem 1rem;
+}
+
+.hotel-title {
+    color: #1e2b4d;
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+}
+
+.hotel-stars {
+    color: #ffc52f;
+    letter-spacing: 2px;
+    font-size: 0.92rem;
+    margin-bottom: 0.45rem;
+}
+
+.hotel-zone {
+    color: #7b8aa8;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+}
+
+.hotel-features {
+    color: #7b8aa8;
+    font-size: 0.95rem;
+    margin-bottom: 0.7rem;
+}
+
+.hotel-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.9rem;
+}
+
+.hotel-rating-score {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 22px;
+    padding: 0 7px;
+    border-radius: 7px;
+    background: #2f78ff;
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.hotel-rating-reviews {
+    color: #8c97ae;
+    font-size: 0.92rem;
+}
+
+.hotel-price {
+    color: #18233f;
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+}
+
+.hotel-price-detail,
+.hotel-total {
+    color: #8c97ae;
+    font-size: 0.92rem;
+}
+
+.hotel-book-btn {
+    border-radius: 7px;
+}
+
+/* Tarjetas especializadas de actividades. */
+.activity-image-wrap {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none;
+}
+
+.activity-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 10px;
+    border-radius: 10px;
+    background: #16396a;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.activity-fav {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    color: #173764;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    font-weight: 700;
+    box-shadow: 0 8px 18px rgba(10, 20, 50, 0.15);
+}
+
+.activity-title {
+    color: #173764;
+    font-size: 0.98rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+}
+
+.activity-meta-line {
+    color: #233d67;
+    font-size: 0.93rem;
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+}
+
+.activity-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.activity-rating-line {
+    display: flex;
+    align-items: center;
+    gap: 0.22rem;
+    color: #173764;
+    font-weight: 700;
+}
+
+.activity-rating-number {
+    font-size: 0.95rem;
+}
+
+.activity-rating-star {
+    color: #173764;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.activity-rating-reviews {
+    color: #566b8d;
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.activity-price-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.activity-old-price {
+    color: #6d7f9f;
+    font-size: 0.92rem;
+}
+
+.activity-new-price {
+    color: #e5395f;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.activity-date-note {
+    color: #6d7f9f;
+    font-size: 0.9rem;
+}
+
+/* Tarjetas especializadas de vuelos con layout en grid. */
+.flight-card {
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #dbe6f6;
+    box-shadow: 0 14px 28px rgba(7, 16, 42, 0.2);
+}
+
+.flight-card-grid {
+    display: grid;
+    grid-template-columns: 110px 1.8fr 120px 170px 190px;
+    gap: 18px;
+    align-items: center;
+}
+
+.flight-company-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.flight-logo-box {
+    width: 70px;
+    height: 40px;
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #e4ebf7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
+
+.flight-logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.flight-company-name {
+    color: #7b8aa8;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.flight-times-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flight-time-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.flight-hours {
+    color: #1b2848;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.flight-route {
+    color: #7b8aa8;
+    font-size: 0.98rem;
+}
+
+.flight-meta-col {
+    color: #7b8aa8;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.flight-price-col {
+    text-align: left;
+}
+
+.flight-price-amount {
+    color: #17233f;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.flight-price-detail {
+    color: #8c97ae;
+    font-size: 0.95rem;
+}
+
+.flight-action-col {
+    display: flex;
+    align-items: center;
+}
+
+.flight-book-btn {
+    min-height: 40px;
+    border-radius: 12px;
+}
+
+.service-state-note {
+    margin-top: -6px;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.service-state-note.success {
+    color: #12a150;
+}
+
+.service-state-note.warning {
+    color: #f1b54f;
+}
+
+/* Ajustes responsive para pantallas medianas y pequeñas. */
+@media (max-width: 992px) {
+    .itinerary-service-row {
+        align-items: flex-start !important;
+        gap: 10px;
+    }
+    .itinerary-hero-title {
+        font-size: 2.35rem;
+    }
+    .itinerary-hero-glow {
+        width: 140px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .budget-chip {
+        width: 100%;
+    }
+    .flight-card-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .flight-company-col {
+        align-items: flex-start;
+        flex-direction: row;
+    }
+}
