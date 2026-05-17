@@ -21,21 +21,34 @@ function getAeropuertoDestino($destino): string
 }
 
 // Sincroniza la tabla servicio de la base de datos con el catalogo definido en PHP.
-function sincronizarCatalogoServicios(): void
+function sincronizarCatalogoServicios(?string $tipoFiltro = null, ?string $destinoFiltro = null): void
 {
-    // Carga el catalogo completo y prepara la conexion.
+    static $sincronizados = [];
+
+    $claveSync = ($destinoFiltro ?? 'todos') . '|' . ($tipoFiltro ?? 'todos');
+    if (isset($sincronizados[$claveSync])) {
+        return;
+    }
+    $sincronizados[$claveSync] = true;
+
+    // Carga el catalogo y prepara la conexion.
     $catalogo = catalogo_servicios();
     $con = conectar();
-    // Aqui se guardan las claves que si deben existir tras la sincronizacion.
-    $clavesValidas = [];
 
-    // Recorre destino por destino y tipo por tipo.
+    // Recorre solo el destino y tipo necesarios cuando la pagina llega filtrada.
     foreach ($catalogo as $destino => $bloques) {
+        if ($destinoFiltro !== null && $destinoFiltro !== '' && $destino !== $destinoFiltro) {
+            continue;
+        }
+
         foreach ($bloques as $tipo => $items) {
+            if ($tipoFiltro !== null && $tipoFiltro !== '' && $tipoFiltro !== 'todos' && $tipo !== $tipoFiltro) {
+                continue;
+            }
+
             foreach ($items as $item) {
                 // Construye una clave unica basada en tipo, destino y descripcion.
                 $descripcion = (string) $item['descripcion'];
-                $clavesValidas[] = $tipo . '|' . $destino . '|' . $descripcion;
                 $precio = (float) $item['precio_total'];
                 $imagen = $item['imagen'] ?? null;
                 // Campo dejado preparado por si algun tipo necesitara otro tratamiento futuro.
@@ -65,32 +78,6 @@ function sincronizarCatalogoServicios(): void
         }
     }
 
-    // Recupera todos los servicios existentes para detectar obsoletos.
-    $resultado = mysqli_query($con, 'SELECT id, tipo, destino, descripcion FROM servicio');
-    $serviciosDb = $resultado ? fetch_all_assoc($resultado) : [];
-    // Elimina servicios que ya no esten en el catalogo siempre que no tengan reservas.
-    foreach ($serviciosDb as $servicioDb) {
-        $clave = $servicioDb['tipo'] . '|' . $servicioDb['destino'] . '|' . $servicioDb['descripcion'];
-        if (in_array($clave, $clavesValidas, true)) {
-            continue;
-        }
-
-        // Comprueba si el servicio esta siendo usado en alguna reserva.
-        $servicioId = (int) $servicioDb['id'];
-        $stmt = mysqli_prepare($con, 'SELECT COUNT(*) AS total FROM reserva WHERE servicio_id = ?');
-        mysqli_stmt_bind_param($stmt, 'i', $servicioId);
-        mysqli_stmt_execute($stmt);
-        $res = mysqli_stmt_get_result($stmt);
-        $totalReservas = $res ? (int) (mysqli_fetch_assoc($res)['total'] ?? 0) : 0;
-
-        // Solo borra servicios no usados para no romper reservas antiguas.
-        if ($totalReservas === 0) {
-            $stmt = mysqli_prepare($con, 'DELETE FROM servicio WHERE id = ?');
-            mysqli_stmt_bind_param($stmt, 'i', $servicioId);
-            mysqli_stmt_execute($stmt);
-        }
-    }
-
     // Cierra la conexion al terminar la sincronizacion.
     mysqli_close($con);
 }
@@ -99,7 +86,7 @@ function sincronizarCatalogoServicios(): void
 function obtenerServicios(?string $tipo = null, ?string $destino = null): array
 {
     // Antes de leer, se asegura de que la tabla servicio esta sincronizada con el catalogo.
-    sincronizarCatalogoServicios();
+    sincronizarCatalogoServicios($tipo, $destino);
     $catalogo = catalogo_servicios();
     $con = conectar();
 
